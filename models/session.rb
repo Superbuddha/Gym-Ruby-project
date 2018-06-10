@@ -1,12 +1,12 @@
-require_relative('../db/sql/runner')
+require_relative('../db/sql_runner')
 
 class Session
 
-  attr_reader(:name, :instructor_id, :member_id, :id)
+  attr_accessor(:name, :instructor_id, :member_id, :id)
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @name = options[name]
+    @name = options['name']
     @instructor_id = options['instructor_id'].to_i
     @member_id = options['member_id'].to_i
   end

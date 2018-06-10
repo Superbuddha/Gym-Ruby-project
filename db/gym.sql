@@ -20,7 +20,6 @@ CREATE TABLE sessions
 (
   id SERIAL8 primary key,
   name VARCHAR(255) not null,
-  -- date time
   member_id INT8 references members(id),
   instructor_id INT8 references instructors(id)
 );

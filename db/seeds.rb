@@ -8,7 +8,7 @@ Instructor.delete_all()
 Member.delete_all()
 
 instructor1 = Instructor.new({
-  "name" => "Romero",
+  "name" => "Dean",
   "activity" => "Boxing"
 })
 
@@ -23,20 +23,20 @@ instructor2.save()
 
 instructor3 = Instructor.new({
   "name" => "Joanna",
-  "activity" => "Yoga"
+  "activity" => "Krav Maga"
 })
 
 instructor3.save()
 
 instructor4 = Instructor.new({
-  "name" => "Newell",
-  "activity" => "Pilates"
+  "name" => "Martin",
+  "activity" => "Medieval Martial Arts"
 })
 
 instructor4.save()
 
 member1 = Member.new({
-  "name" => "Maggie",
+  "name" => "Joanna",
   "age" => 30
 })
 
@@ -64,7 +64,7 @@ member4 = Member.new({
 member4.save()
 
 session1 = Session.new({
-  "name" => "Sparring"
+  "name" => "Sparring",
   "member_id" => member1.id,
   "instructor_id" => instructor1.id
 })
@@ -72,7 +72,7 @@ session1 = Session.new({
 session1.save()
 
 session2 = Session.new({
-  "name" => "Fundamentals"
+  "name" => "BJJ Fundamentals",
   "member_id" => member2.id,
   "instructor_id" => instructor2.id
 })
@@ -80,14 +80,14 @@ session2 = Session.new({
 session2.save()
 
 session3 = Session.new({
-  "name" => "Ashtanga Yoga"
+  "name" => "Krav Maga advanced",
   "member_id" => member3.id,
   "instructor_id" => instructor3.id
 })
 session3.save()
 
 session4 = Session.new({
-  "name" => "Pilates Intermediate"
+  "name" => "HEMA beginners",
   "member_id" => member4.id,
   "instructor_id" => instructor4.id
 })
