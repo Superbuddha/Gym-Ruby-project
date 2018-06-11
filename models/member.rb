@@ -1,12 +1,15 @@
 require_relative( '../db/sql_runner' )
 
 class Member
-
-  attr_reader( :name, :age, :id )
+# adding address, telephone, email
+  attr_reader( :name, :address, :telephone, :email, :age, :id )
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
     @name = options['name']
+    @address = options['address']
+    @telephone = options['telephone'].to_i
+    @email = options['email']
     @age = options['age'].to_i
   end
 
@@ -14,11 +17,14 @@ class Member
     sql = "INSERT INTO members
     (
       name,
+      address,
+      telephone,
+      email,
       age
     )
     VALUES
     (
-      $1, $2
+      $1, $2, $3, $4, $5
     )
     RETURNING id"
     values = [@name, @age]

@@ -37,7 +37,7 @@ class Gymclass
   def self.all()
     sql = "SELECT * FROM gymclasses"
     results = SqlRunner.run( sql )
-    return results.map { |hash| Member.new( hash ) }
+    return results.map { |hash| Gymclass.new( hash ) }
   end
 
   def self.find( id )

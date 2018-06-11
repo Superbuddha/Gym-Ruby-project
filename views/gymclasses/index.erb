@@ -8,9 +8,9 @@
   </tr>
   <% for gymclass in @gymclasses %>
   <tr>
-    <td><a href="/gymclasses/<%= gymclass.id %>"><%= instructor.name %></a></td>
+    <td><a href="/gymclasses/<%= gymclass.id %>"><%= gymclass.name %></a></td>
     <td>|</td>
-    <td><%= instructor.type %></td>
+    <td><%= gymclass.activity %></td>
   </tr>
   <% end %>
 </table>
