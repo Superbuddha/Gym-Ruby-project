@@ -1,0 +1,11 @@
+<h1>Gymclass <%= @gymclass.name %></h1>
+
+<p>Type: <%= @gymclass.type %></p>
+
+<h3>Gymclasses:</h3>
+
+<ul>
+  <% @gymclass.members.each do |member| %>
+  <li><%= member.name %></li>
+  <% end %>
+</ul>

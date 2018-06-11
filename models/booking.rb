@@ -1,37 +1,35 @@
 require_relative('../db/sql_runner')
 
-class Session
+class Booking
 
-  attr_accessor(:name, :instructor_id, :member_id, :id)
+  attr_accessor(:gymclass_id, :member_id, :id)
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @name = options['name']
-    @instructor_id = options['instructor_id'].to_i
+    @gymclass_id = options['gymclass_id'].to_i
     @member_id = options['member_id'].to_i
   end
 
   def save()
-    sql = "INSERT INTO sessions
+    sql = "INSERT INTO bookings
     (
-      name,
-      instructor_id,
+      gymclass_id,
       member_id
     )
     VALUES
     (
-      $1, $2, $3
+      $1, $2
     )
     RETURNING id"
-    values = [@name, @instructor_id, @member_id]
+    values = [@gymclass_id, @member_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
 
   def self.all()
-    sql = "SELECT * FROM sessions"
+    sql = "SELECT * FROM bookings"
     results = SqlRunner.run( sql )
-    return results.map { |session| Session.new( session ) }
+    return results.map { |booking| Booking.new( booking ) }
   end
 
   def member()
@@ -42,21 +40,21 @@ class Session
     return Member.new( results.first )
   end
 
-  def instructor()
-    sql = "SELECT * FROM instructors
+  def gymclass()
+    sql = "SELECT * FROM gymclasses
     WHERE id = $1"
-    values = [@instructor_id]
+    values = [@gymclass_id]
     results = SqlRunner.run( sql, values )
-    return Instructor.new( results.first )
+    return Gymclass.new( results.first )
   end
 
   def self.delete_all()
-    sql = "DELETE FROM sessions"
+    sql = "DELETE FROM bookings"
     SqlRunner.run( sql )
   end
 
   def self.destroy(id)
-    sql = "DELETE FROM sessions
+    sql = "DELETE FROM bookings
     WHERE id = $1"
     values = [id]
     SqlRunner.run( sql, values )

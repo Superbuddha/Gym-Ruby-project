@@ -1,0 +1,10 @@
+<h1><%= @member.name %> (member)</h1>
+
+<p>Age: <%= @member.age %></p>
+
+
+<ul>
+  <% @member.gymclasses.each do |gymclass| %>
+  <li><%= gymclass.name %></li>
+  <% end %>
+</ul>

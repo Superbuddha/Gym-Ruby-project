@@ -1,8 +1,8 @@
-DROP TABLE sessions;
-DROP TABLE instructors;
+DROP TABLE bookings;
+DROP TABLE gymclasses;
 DROP TABLE members;
 
-CREATE TABLE instructors
+CREATE TABLE gymclasses
 (
   id SERIAL8 primary key,
   name VARCHAR(255) not null,
@@ -16,10 +16,9 @@ CREATE TABLE members
   age INT2
 );
 
-CREATE TABLE sessions
+CREATE TABLE bookings
 (
   id SERIAL8 primary key,
-  name VARCHAR(255) not null,
   member_id INT8 references members(id),
-  instructor_id INT8 references instructors(id)
+  gymclass_id INT8 references gymclasses(id)
 );

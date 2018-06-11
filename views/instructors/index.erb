@@ -1,0 +1,16 @@
+<h1>Instructors</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Activity</th>
+  </tr>
+  <% for gymclass in @gymclasses %>
+  <tr>
+    <td><a href="/gymclasses/<%= gymclass.id %>"><%= instructor.name %></a></td>
+    <td>|</td>
+    <td><%= instructor.type %></td>
+  </tr>
+  <% end %>
+</table>

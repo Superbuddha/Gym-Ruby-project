@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Member
 
-  attr_reader( :name, :activity, :id )
+  attr_reader( :name, :age, :id )
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
@@ -27,12 +27,12 @@ class Member
   end
 
   def instructors()
-    sql = "SELECT i.* FROM instructors i
-    INNER JOIN sessions s ON
-    s.instructor_id = i_id WHERE s.member_id = $1;"
+    sql = "SELECT i.* FROM gymclasses i
+    INNER JOIN booking b ON
+    b.gymclass_id = i_id WHERE b.member_id = $1;"
     values = [@id]
     results = SqlRunner.run(sql)
-    return results.map { |instructor| Instructor.new(instructor) }
+    return results.map { |gymclass| Gymclass.new(gymclass) }
   end
 
   def self.all()

@@ -1,6 +1,6 @@
 require_relative( '../db/sql_runner' )
 
-class Instructor
+class Gymclass
 
   attr_reader( :name, :activity, :id )
 
@@ -10,7 +10,7 @@ class Instructor
     @activity = options['activity']
   end
   def save()
-    sql = "INSERT INTO instructors
+    sql = "INSERT INTO gymclasses
     (
       name,
       activity
@@ -27,29 +27,29 @@ class Instructor
 
   def members
     sql = "SELECT m.* FROM members m
-    INNER JOIN sessions s ON s.member_id = m.id
-    WHERE s.instructor_id = $1;"
+    INNER JOIN booking b ON b.member_id = m.id
+    WHERE b.gymclass_id = $1;"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map { |member| Member.new(member) }
   end
 
   def self.all()
-    sql = "SELECT * FROM instructors"
+    sql = "SELECT * FROM gymclasses"
     results = SqlRunner.run( sql )
     return results.map { |hash| Member.new( hash ) }
   end
 
   def self.find( id )
-    sql = "SELECT * FROM instructors
+    sql = "SELECT * FROM gymclasses
     WHERE id = $1"
     values = [id]
     results = SqlRunner.run( sql, values )
-    return Instructor.new( results.first )
+    return Gymclass.new( results.first )
   end
 
   def self.delete_all
-    sql = "DELETE FROM instructors"
+    sql = "DELETE FROM gymclasses"
     SqlRunner.run( sql )
   end
 

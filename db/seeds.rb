@@ -1,39 +1,39 @@
-require_relative( "../models/instructor.rb" )
+require_relative( "../models/gymclass.rb" )
 require_relative( "../models/member.rb" )
-require_relative( "../models/session.rb" )
+require_relative( "../models/booking.rb" )
 require("pry-byebug")
 
-Session.delete_all()
-Instructor.delete_all()
+Booking.delete_all()
+Gymclass.delete_all()
 Member.delete_all()
 
-instructor1 = Instructor.new({
-  "name" => "Dean",
+gymclass1 = Gymclass.new({
+  "name" => "Monday 5pm",
   "activity" => "Boxing"
 })
 
-instructor1.save()
+gymclass1.save()
 
-instructor2 = Instructor.new({
-  "name" => "Mark",
+gymclass2 = Gymclass.new({
+  "name" => "Tuesday 5pm",
   "activity" => "Brazilian Jiu Jistsu"
 })
 
-instructor2.save()
+gymclass2.save()
 
-instructor3 = Instructor.new({
-  "name" => "Joanna",
-  "activity" => "Krav Maga"
+gymclass3 = Gymclass.new({
+  "name" => "Wednesday 5pm",
+  "activity" => "Kung Fu"
 })
 
-instructor3.save()
+gymclass3.save()
 
-instructor4 = Instructor.new({
-  "name" => "Martin",
-  "activity" => "Medieval Martial Arts"
+gymclass4 = Gymclass.new({
+  "name" => "Thursday 5pm",
+  "activity" => "MMA"
 })
 
-instructor4.save()
+gymclass4.save()
 
 member1 = Member.new({
   "name" => "Joanna",
@@ -51,7 +51,7 @@ member2.save()
 
 member3 = Member.new({
   "name" => "Celine",
-  "age" => 15
+  "age" => 19
 })
 
 member3.save()
@@ -63,36 +63,45 @@ member4 = Member.new({
 
 member4.save()
 
-session1 = Session.new({
-  "name" => "Sparring",
+member5 = Member.new({
+  "name" => "Morty",
+  "age" => 45
+  })
+member5.save()
+
+booking1 = Booking.new({
   "member_id" => member1.id,
-  "instructor_id" => instructor1.id
+  # "member_id" => member5.id,
+  "gymclass_id" => gymclass1.id
 })
+booking1.save()
 
-session1.save()
+booking5 = Booking.new({
+  # "member_id" => member1.id,
+  "member_id" => member5.id,
+"gymclass_id" => gymclass1.id
+})
+booking5.save()
 
-session2 = Session.new({
-  "name" => "BJJ Fundamentals",
+booking2 = Booking.new({
   "member_id" => member2.id,
-  "instructor_id" => instructor2.id
+  "gymclass_id" => gymclass2.id
 })
 
-session2.save()
+booking2.save()
 
-session3 = Session.new({
-  "name" => "Krav Maga advanced",
+booking3 = Booking.new({
   "member_id" => member3.id,
-  "instructor_id" => instructor3.id
+  "gymclass_id" => gymclass3.id
 })
-session3.save()
+booking3.save()
 
-session4 = Session.new({
-  "name" => "HEMA beginners",
+booking4 = Booking.new({
   "member_id" => member4.id,
-  "instructor_id" => instructor4.id
+  "gymclass_id" => gymclass4.id
 })
 
-session4.save()
+booking4.save()
 
 binding.pry
 nil
