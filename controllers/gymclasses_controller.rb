@@ -19,14 +19,13 @@ get '/gymclasses/:id/edit' do # edit
 end
 
 get '/gymclasses/new' do # new
-  erb( :gymclasses/new)
+  erb( :"gymclasses/new")
 end
 
 post '/gymclasses' do # create
   @gymclasses = Gymclass.new( params )
   @gymclass.save()
-  # why is create separate from :gymclass?
-  erb( :gymclass/create)
+  erb( :"gymclass/create")
 end
 
 post '/gymclasses/:id' do # update
