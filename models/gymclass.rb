@@ -27,7 +27,7 @@ class Gymclass
 
   def members
     sql = "SELECT m.* FROM members m
-    INNER JOIN booking b ON b.member_id = m.id
+    INNER JOIN bookings b ON b.member_id = m.id
     WHERE b.gymclass_id = $1;"
     values = [@id]
     results = SqlRunner.run(sql, values)

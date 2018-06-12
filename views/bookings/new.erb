@@ -1,23 +1,23 @@
-<h1>Bitey bitey!</h1>
+<h1>New booking!!</h1>
 
-<form action="/bookings" method="post">
+<form action="/bookings/new" method="post">
   <label>
-  Select a zombie:
-    <select name="zombie_id">
-      <% for zombie in @zombies %>
-      <option value="<%= zombie.id %>"><%= zombie.name %></option>
+  Select a class:
+    <select name="gymclass_id">
+      <% for gymclass in @gymclasses %>
+      <option value="<%= gymclass.id %>"><%= gymclass.name %></option>
       <% end %>
     </select>
   </label>
 
   <label>
-    Select a victim:
-    <select name="victim_id">
-      <% for victim in @victims %>
-      <option value="<%= victim.id %>"><%= victim.name %></option>
+    Select a member:
+    <select name="member_id">
+      <% for member in @members %>
+      <option value="<%= member.id %>"><%= member.name %></option>
       <% end %>
     </select>
   </label>
 
-  <input class="btn btn--action" type='submit' value="Bite!">
+  <input class="btn btn--action" type='submit' value="Booking!">
 </form>

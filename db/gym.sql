@@ -14,7 +14,7 @@ CREATE TABLE members
   id SERIAL8 primary key,
   name VARCHAR(255) not null,
   address VARCHAR(255) not null,
-  telephone INT2,
+  telephone INT8,
   email VARCHAR(255) not null,
   age INT2
 );

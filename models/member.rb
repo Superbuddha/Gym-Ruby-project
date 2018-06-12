@@ -27,17 +27,17 @@ class Member
       $1, $2, $3, $4, $5
     )
     RETURNING id"
-    values = [@name, @age]
+    values = [@name, @address, @telephone, @email, @age]
     results = SqlRunner.run(sql,values)
     @id = results.first()['id'].to_i
   end
 
-  def instructors()
-    sql = "SELECT i.* FROM gymclasses i
-    INNER JOIN booking b ON
-    b.gymclass_id = i_id WHERE b.member_id = $1;"
+  def gymclasses()
+    sql = "SELECT g.* FROM gymclasses g
+    INNER JOIN bookings b ON
+    b.gymclass_id = g.id WHERE b.member_id = $1;"
     values = [@id]
-    results = SqlRunner.run(sql)
+    results = SqlRunner.run(sql, values)
     return results.map { |gymclass| Gymclass.new(gymclass) }
   end
 

@@ -16,7 +16,7 @@ gymclass1.save()
 
 gymclass2 = Gymclass.new({
   "name" => "Tuesday 5pm",
-  "activity" => "Brazilian Jiu Jistsu"
+  "activity" => "Brazilian Jiu Jitsu"
 })
 
 gymclass2.save()

@@ -1,11 +1,9 @@
-<h1>Gymclass <%= @gymclass.name %></h1>
+<h1><%= @gymclasses.name %> (class)</h1>
 
-<p>Type: <%= @gymclass.type %></p>
-
-<h3>Gymclasses:</h3>
+<p>Activity: <%= @gymclasses.activity %></p>
 
 <ul>
-  <% @gymclass.members.each do |member| %>
+  <% @gymclasses.members.each do |member| %>
   <li><%= member.name %></li>
   <% end %>
 </ul>

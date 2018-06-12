@@ -3,14 +3,25 @@
 <table>
   <tr>
     <th>Name</th>
-    <th></th>
+    <th>Address</th>
+      <th>Telephone</th>
+        <th>Email</th>
     <th>age</th>
   </tr>
+
   <% for member in @members %>
   <tr>
-    <td><a href="/members/<%= member.id %>"><%= member.name %></a></td>
-    <td>|</td>
+    <td><a href="/members/<%= member.id %>"><%= member.name %></a>
+    </td>
+      <td><%= member.address %></td>
+        <td><%= member.telephone%></td>
+          <td><%= member.email %></td>
+
     <td><%= member.age %></td>
+<td>  <a href="/members/new">Modify information</a></td>
   </tr>
+
   <% end %>
+  
 </table>
+<a href="/members/new">Register new member!</a>

@@ -8,30 +8,29 @@ get '/members' do # index
   erb ( :"members/index" )
 end
 
-get '/members' do # new
+get '/members/new' do # new
   erb( :"members/new")
 end
 
 get '/members/:id' do # show
-  # or [:id]?
-  @member = Member.find( params['id'].to_i)
+  @member = Member.find( params[:id])
   erb( :"members/show" )
 end
 
 post '/members' do # create
   @member = Member.new( params )
   @member.save()
-  erb( :"members/create")
+  redirect "/members"
 end
 
 get '/members/:id/edit' do # edit
   @member = Member.find( params[:id] )
-  erb( :"member/edit" )
+  erb( :"members/edit" )
 end
 
 post '/members/:id' do # update
   Member.new( params ).update
-  redirect to '/members'
+  redirect to '/members/new'
 end
 
 post '/member/:id/delete' do # delete
