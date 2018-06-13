@@ -9,6 +9,7 @@ class Gymclass
     @name = options['name']
     @activity = options['activity']
   end
+  
   def save()
     sql = "INSERT INTO gymclasses
     (
