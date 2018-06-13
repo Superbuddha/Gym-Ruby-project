@@ -31,9 +31,9 @@ end
 
 post '/members/:id' do
   @member = Member.new( params )
-  @member.update
+  @member.update()
 
-  redirect to '/members/update'
+  redirect to '/members'
 end
 
 post '/member/:id/delete' do

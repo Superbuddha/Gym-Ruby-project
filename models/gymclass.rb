@@ -9,7 +9,7 @@ class Gymclass
     @name = options['name']
     @activity = options['activity']
   end
-  
+
   def save()
     sql = "INSERT INTO gymclasses
     (
@@ -52,6 +52,12 @@ class Gymclass
   def self.delete_all
     sql = "DELETE FROM gymclasses"
     SqlRunner.run( sql )
+  end
+  def delete()
+    sql = "DELETE FROM gymclasses WHERE id = $1"
+    values = [@id]
+    SqlRunner.run( sql, values)
+
   end
 
 end

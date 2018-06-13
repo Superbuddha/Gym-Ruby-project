@@ -18,8 +18,8 @@
           <td><%= member.email %></td>
 
     <td><%= member.age %></td>
-<td>  <a href="/members/new">Modify information</a></td>
-<td>  <a href="/members/new">Book a Class</a></td>
+<td>  <a href="/members/<%= member.id %>/edit">Modify information</a></td>
+<td>  <a href="/bookings/new">Book a Class</a></td>
   </tr>
 
   <% end %>

@@ -22,6 +22,6 @@ CREATE TABLE members
 CREATE TABLE bookings
 (
   id SERIAL8 primary key,
-  member_id INT8 references members(id),
-  gymclass_id INT8 references gymclasses(id)
+  member_id INT8 references members(id) on delete cascade,
+  gymclass_id INT8 references gymclasses(id) on delete cascade
 );

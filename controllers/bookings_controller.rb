@@ -12,7 +12,9 @@ get '/bookings' do # index
   erb ( :"bookings/index" )
 end
 
-get '/bookings/new' do # new
+get '/bookings/new' do
+  @gymclasses = Gymclass.all
+  @members = Member.all
   erb(:"bookings/new")
 end
 
@@ -24,7 +26,8 @@ end
 post '/bookings' do # create
   @booking = Booking.new(params)
   @booking.save
-  erb( :"bookings/create")
+    @bookings = Booking.all
+  erb( :"bookings/index")
 end
 
 get '/bookings/:id/edit' do # edit
