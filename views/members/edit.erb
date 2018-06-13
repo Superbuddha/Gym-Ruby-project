@@ -1,0 +1,20 @@
+<form method="post" action="/members/<%= @member.id %>"/>
+
+  <label for="name">Name:</label>
+  <input id="name" type="text" name="name" value= "<%= @member.name %>"/>
+
+  <label for= "address">Address:</label>
+    <input id="address" type="text" name="address" value= "<%= @member.address %>"/>
+
+    <label for="telephone">Telephone:</label>
+    <input id="telephone" type="text" name="telephone" value= "<%= @member.telephone %>"/>
+
+    <label for= "email">Email:</label>
+      <input id="email" type="text" name="email" value= "<%= @member.email %>"/>
+
+      <label for= "age">Age:</label>
+        <input id="age" type="text" name="age" value= "<%= @member.age %>"/>
+
+
+  <input type="submit" value="Modify details!" />
+</form>
